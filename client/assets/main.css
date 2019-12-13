@@ -1,0 +1,158 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  font-family: "Lato", sans-serif;
+  color: ghostwhite;
+  background: #485563; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #29323c,
+    #485563
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #29323c,
+    #485563
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.title {
+  font-size: 5rem;
+  font-family: "Pacifico", cursive;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.word_box,
+.info_box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.character {
+  font-size: 5rem;
+  margin: 0 1rem;
+  transition: all 250ms ease-in-out;
+}
+
+.bottom_section {
+  display: flex;
+  flex: 0.5;
+  width: 100%;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+.stat_box {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 0.5;
+  align-items: center;
+  border-right: 2px solid rgba(248, 248, 255, 0.15);
+}
+
+.guesses_num,
+.combo_num,
+.score_num {
+  font-size: 3rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.combo_num {
+  text-transform: lowercase;
+}
+
+.prev_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 4;
+  padding: 1rem;
+}
+
+.prev_guess {
+  font-size: 2.5rem;
+  color: rgba(248, 248, 255, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 250ms ease-in-out;
+  padding: 0.5rem;
+}
+
+.prev_guess_box {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.wrong {
+  color: #ff696c;
+}
+
+.right {
+  color: #6cff69;
+}
+
+@keyframes characterReveal {
+  from {
+    opacity: 0;
+    transform: scale(4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes characterUnreveal {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(4);
+  }
+}
+
+.unrevealed {
+  animation-name: characterUnreveal;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.revealed {
+  animation-name: characterReveal;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}

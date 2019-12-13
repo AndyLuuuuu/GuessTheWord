@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:700|Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/main.css" />
+
+    <title>Simple Hangman</title>
+  </head>
+  <body>
+    <h1 class="title">Simple Hangman</h1>
+    <div class="word_box" id="word_box"></div>
+    <div class="bottom_section">
+      <div class="stat_box">
+        <p class="subtitle">SCORE</p>
+        <p class="score_num" id="score_num">0</p>
+      </div>
+      <div class="stat_box">
+        <p class="subtitle">COMBO</p>
+        <p class="combo_num" id="combo_num">0</p>
+      </div>
+      <div class="stat_box">
+        <p class="subtitle">INCORRECT</p>
+        <p class="guesses_num" id="guesses_num">0</p>
+      </div>
+      <div class="prev_box">
+        <p class="subtitle">GUESSED LETTERS</p>
+        <div class="prev_guess_box" id="prev_guess_box"></div>
+      </div>
+    </div>
+    <script src="/assets/main.js"></script>
+  </body>
+</html>
