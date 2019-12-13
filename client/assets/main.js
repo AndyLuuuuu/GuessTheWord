@@ -10,7 +10,7 @@ let comboMultiplier = 1;
 combo_num.textContent = `${comboMultiplier}x`;
 
 const getWord = () => {
-  fetch("https://simplehangman.herokuapp.com/random").then(res =>
+  fetch("https://guessthewordgame.herokuapp.com/random").then(res =>
     res
       .text()
       .then(word => {
