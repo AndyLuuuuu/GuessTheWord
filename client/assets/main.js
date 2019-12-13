@@ -5,7 +5,7 @@ const combo_num = document.getElementById("combo_num");
 let previous_guesses = [];
 let guessWord = null;
 let placeholder = [];
-let comboMultiplier = 1;
+let comboMultiplier = 0;
 
 combo_num.textContent = `${comboMultiplier}x`;
 
@@ -59,19 +59,19 @@ const keyevent = event => {
           let guesses_num = document.getElementById("guesses_num");
           let wrongs = guesses_num.textContent;
           guesses_num.textContent = parseInt(wrongs) + 1;
-          if (comboMultiplier > 0) {
-            comboMultiplier = 1;
+          if (comboMultiplier >= 0) {
+            comboMultiplier = 0;
           }
           previous_guesses.push(key);
         } else {
           previous_guesses.push(key);
+          if (comboMultiplier < 4) {
+            comboMultiplier += 1;
+          }
           document.getElementById(`letter_${key}`).classList.add("right");
           let score_num = document.getElementById("score_num");
           let score = score_num.textContent;
           score_num.textContent = parseInt(score) + 10 * comboMultiplier;
-          if (comboMultiplier < 4) {
-            comboMultiplier += 1;
-          }
         }
 
         updatePlaceholder(lastCorrectLetter);
@@ -111,7 +111,6 @@ const checkWin = () => {
     setTimeout(() => {
       getWord();
       document.getElementById("guesses_num").textContent = 0;
-      comboMultiplier = 1;
       combo_num.textContent = `${comboMultiplier}x`;
     }, 3000);
   }
