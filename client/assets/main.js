@@ -68,7 +68,7 @@ const keyevent = event => {
           document.getElementById(`letter_${key}`).classList.add("right");
           let score_num = document.getElementById("score_num");
           let score = score_num.textContent;
-          score_num.textContent = parseInt(score) + 2 * comboMultiplier;
+          score_num.textContent = parseInt(score) + 10 * comboMultiplier;
           if (comboMultiplier < 4) {
             comboMultiplier += 1;
           }
