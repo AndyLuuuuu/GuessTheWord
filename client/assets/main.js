@@ -11,7 +11,7 @@ let comboMultiplier = 1;
 combo_num.textContent = `${comboMultiplier}x`;
 
 const getWord = () => {
-  fetch("http://localhost:3000/random").then(res =>
+  fetch("https://simplehangman.herokuapp.com/random").then(res =>
     res
       .text()
       .then(word => {
