@@ -1,7 +1,6 @@
 const prev_guess_box = document.getElementById("prev_guess_box");
 const word_box = document.getElementById("word_box");
 const combo_num = document.getElementById("combo_num");
-console.log(prev_guess_box);
 
 let previous_guesses = [];
 let guessWord = null;
@@ -16,7 +15,6 @@ const getWord = () => {
       .text()
       .then(word => {
         guessWord = word.split("");
-        console.log(guessWord);
         placeholder = [];
         previous_guesses = [];
         guessWord.map(char => {
@@ -70,12 +68,10 @@ const keyevent = event => {
           document.getElementById(`letter_${key}`).classList.add("right");
           let score_num = document.getElementById("score_num");
           let score = score_num.textContent;
-          console.log(comboMultiplier);
           score_num.textContent = parseInt(score) + 2 * comboMultiplier;
           if (comboMultiplier < 4) {
             comboMultiplier += 1;
           }
-          console.log(score);
         }
 
         updatePlaceholder(lastCorrectLetter);
@@ -83,7 +79,6 @@ const keyevent = event => {
       }
     }
   }
-  console.log(event.keyCode);
 };
 
 const updatePlaceholder = lastCorrectLetter => {
@@ -91,8 +86,6 @@ const updatePlaceholder = lastCorrectLetter => {
   placeholder.map(temp => {
     const h2 = document.createElement("h2");
     h2.classList.add("character");
-    console.log(lastCorrectLetter);
-    console.log(temp);
     if (temp == lastCorrectLetter) {
       h2.classList.add("revealed");
     }
@@ -108,7 +101,6 @@ const checkWin = () => {
     document.removeEventListener("keyup", keyevent);
     setTimeout(() => {
       const wordLetter = document.getElementsByClassName("character");
-      console.log(wordLetter);
       for (let i = wordLetter.length - 1; i >= 0; i--) {
         wordLetter[i].classList.remove("revealed");
         setTimeout(() => {
