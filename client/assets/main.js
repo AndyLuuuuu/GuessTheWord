@@ -17,7 +17,7 @@ let score_num = document.getElementById("score_num");
 let gameStart = false;
 let paused = false;
 let time = {
-  minute: 10,
+  minute: 5,
   second: 0
 };
 let previous_guesses = [];
