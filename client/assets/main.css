@@ -27,10 +27,198 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.instructions,
+.submit_score,
+.highscore {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: ghostwhite;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 2rem 2rem;
+  line-height: 2.5rem;
+  border-radius: 25px;
+  z-index: 100;
+  box-shadow: 0px 10px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.instructions,
+.submit_score {
+  font-size: 1.2rem;
+}
+
+.highscore {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+  z-index: 25;
+  width: 30%;
+}
+
+.highscore h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.score_list {
+  content: "";
+  height: 30rem;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.highscore .score_list .score_row p {
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+.score_list .score_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.instructions h1 {
+  margin-bottom: 2rem;
+  text-align: center;
+  transition: opacity 150ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.begin_btn {
+  padding: 1.25rem;
+  width: 50%;
+  margin: 1rem auto;
+  background-color: #1aa0ed;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: ghostwhite;
+  transition: box-shadow 100ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.begin_btn:hover {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+  transform: scale(1.025);
+}
+
+.begin_btn:focus {
+  outline: none;
+}
+
+.gameover_overlay,
+.pause_overlay {
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameover_overlay h1,
+.pause_overlay h1 {
+  font-size: 5rem;
+}
+
+.submit_score {
+  line-height: initial;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+}
+
+.submit_score .submit_message {
+  font-size: 1.25rem;
+}
+
+.gameover_overlay {
+  flex-direction: column;
+}
+
+.gameover_overlay p {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.gameover_overlay h3 {
+  font-size: 1.5rem;
+}
+
+.gameover_overlay form {
+  width: 100%;
+  height: 100%;
+}
+
+.gameover_overlay form input {
+  width: 100%;
+  height: 3rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.submit_btn,
+.restart_btn,
+.scores_btn {
+  width: 100%;
+  height: 4rem;
+  background-color: #1aa0ed;
+  border: none;
+  color: ghostwhite;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 100ms ease-in-out, transform 100ms ease-in-out;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.restart_btn {
+  background-color: #29ba72;
+}
+
+.scores_btn {
+  background-color: #f78d2a;
+}
+
+.scores_btn:hover,
+.restart_btn:hover,
+.submit_btn:hover {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+  transform: scale(1.025);
+}
+
+.submit_btn:focus,
+.restart_btn:focus {
+  outline: none;
+}
+
 .title {
   font-size: 5rem;
   font-family: "Pacifico", cursive;
   margin-bottom: 2rem;
+}
+
+.timer {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.countdown {
+  position: absolute;
+  font-size: 4rem;
 }
 
 .subtitle {
@@ -39,13 +227,14 @@ body {
   text-align: left;
 }
 
-.word_box,
-.info_box {
+.word_box {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
 .character {
@@ -61,6 +250,8 @@ body {
   font-size: 1.2rem;
   text-transform: uppercase;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
 .stat_box {
@@ -75,7 +266,8 @@ body {
 
 .guesses_num,
 .combo_num,
-.score_num {
+.score_num,
+.timer_num {
   font-size: 3rem;
   flex: 1;
   display: flex;
@@ -122,7 +314,7 @@ body {
 @keyframes characterReveal {
   from {
     opacity: 0;
-    transform: scale(4);
+    transform: scale(3);
   }
   to {
     opacity: 1;
@@ -141,6 +333,17 @@ body {
   }
 }
 
+@keyframes instructionsHide {
+  from {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
 .unrevealed {
   animation-name: characterUnreveal;
   animation-duration: 1s;
@@ -155,4 +358,20 @@ body {
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+.hideInstructions {
+  animation-name: instructionsHide;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.invisible {
+  opacity: 0;
 }

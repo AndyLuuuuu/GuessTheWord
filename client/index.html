@@ -13,9 +13,51 @@
     <title>Guess The Word</title>
   </head>
   <body>
+    <div class="instructions" id="instructions">
+      <h1>How to play</h1>
+      <p>You got 10 minutes, guess as many words as you can!</p>
+      <p>1. Click "Begin Game" to start!</p>
+      <p>2. Start guessing by pressing any letter on keyboard!</p>
+      <p>3. Every correct letter is 10 points!</p>
+      <p>4. More Correct guesses in a row, higher the combo!</p>
+      <p>5. When 10 minutes are over, submit your score!</p>
+      <p>5. Press spacebar to pause whenever you want!</p>
+      <button class="begin_btn" id="begin_btn">Begin Game</button>
+    </div>
+    <div class="pause_overlay" id="pause_overlay"><h1>PAUSED</h1></div>
+    <div class="gameover_overlay" id="gameover_overlay">
+      <div class="submit_score" id="submit_score">
+        <h1>Game Over</h1>
+        <p id="final_score"></p>
+        <form>
+          <input
+            placeholder="Enter your name..."
+            maxlength="10"
+            id="score_name"
+            required
+          />
+          <p class="submit_message" id="submit_message"></p>
+          <button class="submit_btn" id="submit">Submit score</button>
+        </form>
+        <button class="scores_btn" id="scores_btn">
+          Show leaderboard
+        </button>
+        <button class="restart_btn" onclick="location.reload();">
+          Restart game
+        </button>
+      </div>
+      <div class="highscore" id="highscore">
+        <h2>Leaderboard</h2>
+        <div class="score_list" id="score_list"></div>
+        <button class="restart_btn" onclick="location.reload();">
+          Restart game
+        </button>
+      </div>
+    </div>
     <h1 class="title">Guess The Word</h1>
+    <div class="countdown" id="countdown"></div>
     <div class="word_box" id="word_box"></div>
-    <div class="bottom_section">
+    <div class="bottom_section" id="bottom_section">
       <div class="stat_box">
         <p class="subtitle">SCORE</p>
         <p class="score_num" id="score_num">0</p>
@@ -27,6 +69,10 @@
       <div class="stat_box">
         <p class="subtitle">INCORRECT</p>
         <p class="guesses_num" id="guesses_num">0</p>
+      </div>
+      <div class="stat_box">
+        <p class="subtitle">TIME LEFT</p>
+        <p class="timer_num" id="timer_num">10:00</p>
       </div>
       <div class="prev_box">
         <p class="subtitle">GUESSED LETTERS</p>
