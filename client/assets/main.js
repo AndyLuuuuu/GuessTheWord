@@ -87,6 +87,9 @@ const keyevent = event => {
             document.getElementById(`letter_${key}`).classList.add("wrong");
             let guesses_num = document.getElementById("guesses_num");
             let wrongs = guesses_num.textContent;
+            let score = score_num.textContent;
+            currentScore = parseInt(score) - 5;
+            score_num.textContent = currentScore;
             guesses_num.textContent = parseInt(wrongs) + 1;
             if (comboMultiplier >= 0) {
               comboMultiplier = 0;
@@ -104,7 +107,6 @@ const keyevent = event => {
               lastCorrectLetter = key.toUpperCase();
               console.log(guessWord[i], key);
               let score = score_num.textContent;
-              console.log(parseInt(score) + 10 * comboMultiplier);
               currentScore = parseInt(score) + 10 * comboMultiplier;
               score_num.textContent = currentScore;
             }
@@ -228,6 +230,7 @@ const getScores = () => {
     .then(res => res.json())
     .then(data => {
       data.map((score, idx) => {
+        score_list.innerHTML = "";
         let div = document.createElement("div");
         div.classList.add("score_row");
         let name_p = document.createElement("p");
