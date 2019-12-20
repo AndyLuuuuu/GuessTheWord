@@ -172,7 +172,7 @@ const setTimer = () => {
         time.second <= 9 ? `0${time.second}` : time.second
       }`;
     }
-  }, 5);
+  }, 1000);
 };
 
 const setCountdown = () => {
