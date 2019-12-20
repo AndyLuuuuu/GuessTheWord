@@ -88,8 +88,10 @@ const keyevent = event => {
             let guesses_num = document.getElementById("guesses_num");
             let wrongs = guesses_num.textContent;
             let score = score_num.textContent;
-            currentScore = parseInt(score) - 5;
-            score_num.textContent = currentScore;
+            if (parseInt(score) > 0) {
+              currentScore = parseInt(score) - 5;
+              score_num.textContent = currentScore;
+            }
             guesses_num.textContent = parseInt(wrongs) + 1;
             if (comboMultiplier >= 0) {
               comboMultiplier = 0;
