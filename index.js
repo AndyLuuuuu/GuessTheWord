@@ -9,8 +9,7 @@ const PORT = process.env.PORT || 3000;
 let words = null;
 
 const client = new Client({
-  connectionString:
-    "postgres://ekrqrlxyjmvdqy:21e7b8fb252f8fad4935b27586dabca449c29edcf7c35ec21682aff1b1bac0f1@ec2-174-129-234-111.compute-1.amazonaws.com:5432/dblck480b993d3",
+  connectionString: process.env.DATABASE_URL,
   ssl: true
 });
 
