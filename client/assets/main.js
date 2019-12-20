@@ -172,7 +172,7 @@ const setTimer = () => {
         time.second <= 9 ? `0${time.second}` : time.second
       }`;
     }
-  }, 1000);
+  }, 5);
 };
 
 const setCountdown = () => {
@@ -271,6 +271,7 @@ submit_btn.addEventListener("click", e => {
         document
           .getElementById("submit_score")
           .classList.add("hideInstructions");
+        getScores();
         document.getElementById("highscore").classList.add("visible");
       } else {
         document.getElementById("submit_message").textContent =
@@ -282,8 +283,8 @@ submit_btn.addEventListener("click", e => {
 
 scores_btn.addEventListener("click", () => {
   document.getElementById("submit_score").classList.add("hideInstructions");
-  document.getElementById("highscore").classList.add("visible");
   getScores();
+  document.getElementById("highscore").classList.add("visible");
 });
 
 const init = () => {
