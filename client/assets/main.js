@@ -271,6 +271,7 @@ submit_btn.addEventListener("click", e => {
         document
           .getElementById("submit_score")
           .classList.add("hideInstructions");
+        document.getElementById("highscore").classList.add("visible");
       } else {
         document.getElementById("submit_message").textContent =
           "Oh no! Something went wrong...";
